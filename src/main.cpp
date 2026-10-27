@@ -169,6 +169,11 @@ class Enemy {
         }
 
 
+        void update(Player& player) {
+            if(sprite.y() < player.sprite.y()) {
+                sprite.set_y(sprite.y() + speed);
+            }
+        }
 
 };
 
@@ -198,7 +203,7 @@ int main() {
         // Update the scores and disaply them
         scoreDisplay.update();
         
-
+        enemy1.update(player);
         bn::core::update();
     }
 }
