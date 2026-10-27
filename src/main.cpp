@@ -155,7 +155,7 @@ class Enemy {
     public:
         //create a sprite for the enemy (zombie that we made)
         bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
-        bn::fixed speed; // The speed of the players
+        bn::fixed speed = 2; // The speed of the players
         bn::size size; // The width and height of the sprite
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
 
@@ -170,8 +170,10 @@ class Enemy {
 
 
         void update(Player& player) {
-            if(sprite.y() < player.sprite.y()) {
-                sprite.set_y(sprite.y() + speed);
+            if (this->sprite.y() > player.sprite.y()) {
+                this->sprite.set_y(this->sprite.y() - speed);
+            } else if (this->sprite.y() < player.sprite.y()) {
+                this->sprite.set_y(this->sprite.y() + speed);
             }
         }
 
@@ -200,10 +202,12 @@ int main() {
             player.sprite.set_y(22);
         }
 
+        enemy1.update(player);
+
         // Update the scores and disaply them
         scoreDisplay.update();
         
-        enemy1.update(player);
+        
         bn::core::update();
     }
 }
