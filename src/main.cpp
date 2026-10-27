@@ -154,7 +154,7 @@ class Enemy {
     
     //create a sprite for the enemy (zombie that we made)
     bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
-    bn::fixed speed; // The speed of the player
+    bn::fixed speed; // The speed of the players
     bn::size size; // The width and height of the sprite
     bn::rect bounding_box; // The rectangle around the sprite for checking collision
 
