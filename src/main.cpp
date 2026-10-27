@@ -10,6 +10,7 @@
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
 #include "bn_sprite_items_square.h"
+#include "bn_sprite_items_zombie.h"
 
 // Width and height of the the player bounding box
 static constexpr bn::size PLAYER_SIZE = {8, 8};
@@ -151,6 +152,7 @@ class Player {
 //sprint 4
 class Enemy {
     
+<<<<<<< HEAD
     public:
         //create a sprite for the enemy (zombie that we made)
         bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
@@ -165,6 +167,13 @@ class Enemy {
             sprite.set_y(starting_y);
             this->size = size;
         }
+=======
+    //create a sprite for the enemy (zombie that we made)
+    bn::sprite_ptr sprite = bn::sprite_items::zombie.create_sprite();
+    bn::fixed speed; // The speed of the players
+    bn::size size; // The width and height of the sprite
+    bn::rect bounding_box; // The rectangle around the sprite for checking collision
+>>>>>>> bc32d5f44bba319fb6cf201095e35e0a4e100e1b
 
 
 
