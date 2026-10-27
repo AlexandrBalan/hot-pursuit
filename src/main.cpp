@@ -112,8 +112,7 @@ class Player {
         Player(bn::fixed xPos,
             bn::fixed yPos,
             bn::fixed playerSpeed,
-            bn::rect playerBounds)
-                
+            bn::rect playerBounds)   
              {
                 sprite.set_x(xPos);
                 sprite.set_y(yPos);
@@ -152,11 +151,20 @@ class Player {
 //sprint 4
 class Enemy {
     
-    //create a sprite for the enemy (zombie that we made)
-    bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
-    bn::fixed speed; // The speed of the players
-    bn::size size; // The width and height of the sprite
-    bn::rect bounding_box; // The rectangle around the sprite for checking collision
+    public:
+        //create a sprite for the enemy (zombie that we made)
+        bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
+        bn::fixed speed; // The speed of the players
+        bn::size size; // The width and height of the sprite
+        bn::rect bounding_box; // The rectangle around the sprite for checking collision
+
+        // Constructor
+        Enemy(bn::fixed starting_x, bn::fixed starting_y, bn::size size) 
+        {   
+            sprite.set_x(starting_x);
+            sprite.set_y(starting_y);
+            this->size = size;
+        }
 
 
 
