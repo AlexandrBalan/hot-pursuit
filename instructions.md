@@ -76,7 +76,12 @@
 1. make/test
 1. add/commit/push
 
-## Wave 7.5 Refactoring
+## Wave 8: Prettifying
+1. Modify the sprites to make them more interesting.
+1. make/test
+1. add/commit push
+
+## Wave 9 Refactoring
 1. Refactor your code into separate files.
     - There should be NO class or function declarations in `main.cpp` other than `int main()`
     - There should be one `.cpp` and `.h` per class
@@ -84,12 +89,7 @@
     - Remember to have include guards in your headers!
 1. make/test and add/commit/push as you go! There should be at least one commit per class.
 
-## Wave 8: Prettifying
-1. Modify the sprites to make them more interesting.
-1. make/test
-1. add/commit push
-
-## Wave 9: Gamifying
+## Wave 10: Gamifying
 Make the game your own in some way! A few ideas:
 - Make it so that later enemies are faster than earlier ones
 - Make it powerups appear than the player can collect that temporarily increase the speed or make it invincible
@@ -97,7 +97,7 @@ Make the game your own in some way! A few ideas:
 - Make it so the enemies never overlap each other when chasing the player (very tricky, but is a huge improvement to the game!)
 - Other ideas you come up with!
 
-## Wave 10: Polishing
+## Wave 11: Polishing
 1. Once you're satisfied with your game and everything is pushed, verify that it works on GitHub pages. Fix configuration if needed.
 1. Make a quick gif of your game!
     1. Open your game in mGBA.
