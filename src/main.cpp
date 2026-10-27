@@ -14,6 +14,8 @@
 
 #include "bn_random.h"
 
+#include "bn_sound_items.h"
+
 // Width and height of the the player bounding box
 static constexpr bn::size PLAYER_SIZE = {8, 8};
 static constexpr bn::size ENEMY_SIZE = {8, 8};
