@@ -12,8 +12,6 @@
 #include "bn_sprite_items_square.h"
 #include "bn_sprite_items_zombie.h"
 
-#include "bn_random.h"
-
 // Width and height of the the player bounding box
 static constexpr bn::size PLAYER_SIZE = {8, 8};
 static constexpr bn::size ENEMY_SIZE = {8, 8};
@@ -127,6 +125,26 @@ class Player {
             if(bn::keypad::right_held()) {
                 sprite.set_x(sprite.x() + speed);
             }
+
+
+            if(this->sprite.x() < MIN_X) {
+                this-> sprite.set_x(MIN_X);
+            }
+
+            if(this->sprite.y() < MIN_Y) {
+                this-> sprite.set_y(MIN_Y);
+            }
+
+
+            if(this->sprite.x() > MAX_X) {
+                this-> sprite.set_x(MAX_X);
+            }
+
+            if(this->sprite.y() > MAX_Y) {
+                this-> sprite.set_y(MAX_Y);
+            }
+
+
             if(bn::keypad::left_held()) {
                 sprite.set_x(sprite.x() - speed);
             }
@@ -184,11 +202,7 @@ class Enemy {
             } else if (this->sprite.x() < player.sprite.x()) {
                 this->sprite.set_x(this->sprite.x() + speed);
             }
-
-            this->bounding_box = create_bounding_box(this->sprite, this->size);
         }
-
-
 
 };
 
@@ -202,7 +216,6 @@ int main() {
     // TODO: we will move the initialization logic to a constructor.
     Player player = Player(44, 22, 1.5, create_bounding_box(player.sprite, player.size));
 
-    bn::random rng;
 
     Enemy enemy1 = Enemy(-60, 40, ENEMY_SIZE);
 
@@ -214,9 +227,6 @@ int main() {
             scoreDisplay.resetScore();
             player.sprite.set_x(44);
             player.sprite.set_y(22);
-
-            enemy1.sprite.set_x(rng.get_int(MIN_X, MAX_X));
-            enemy1.sprite.set_y(rng.get_int(MIN_Y, MAX_Y));
         }
 
         enemy1.update(player);
