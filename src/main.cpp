@@ -16,6 +16,10 @@
 
 #include "bn_sound_items.h"
 
+#include <bn_vector.h>
+
+#include <bn_vector.h>
+
 // Width and height of the the player bounding box
 static constexpr bn::size PLAYER_SIZE = {8, 8};
 static constexpr bn::size ENEMY_SIZE = {8, 8};
@@ -224,23 +228,32 @@ int main() {
     // TODO: we will move the initialization logic to a constructor.
     Player player = Player(44, 22, 1.5, create_bounding_box(player.sprite, player.size));
 
+    bn::vector<Enemy, 16> enemyVec = {};
+    enemyVec.push_back(Enemy(-60, 40, ENEMY_SIZE));
+    enemyVec.push_back(Enemy(-80, -40, ENEMY_SIZE));
+    enemyVec.push_back(Enemy(-10, 20, ENEMY_SIZE));
 
-    Enemy enemy1 = Enemy(-60, 40, ENEMY_SIZE);
 
     while(true) {
         player.update();
 
-        // Reset the current score and player position if the player collides with enemy
-        if(enemy1.bounding_box.intersects(player.bounding_box)) {
-            scoreDisplay.resetScore();
-            player.sprite.set_x(44);
-            player.sprite.set_y(22);
+        
 
-            enemy1.sprite.set_x(rng.get_int(MIN_X, MAX_X));
-            enemy1.sprite.set_y(rng.get_int(MIN_Y, MAX_Y));
+        for (Enemy& e : enemyVec) {
+            e.update(player);
+
+            // Reset the current score and player position if the player collides with enemy
+            if(e.bounding_box.intersects(player.bounding_box)) {
+                scoreDisplay.resetScore();
+                player.sprite.set_x(44);
+                player.sprite.set_y(22);
+
+                e.sprite.set_x(rng.get_int(MIN_X, MAX_X));
+                e.sprite.set_y(rng.get_int(MIN_Y, MAX_Y));
+            }
         }
 
-        enemy1.update(player);
+        
 
         // Update the scores and disaply them
         scoreDisplay.update();
