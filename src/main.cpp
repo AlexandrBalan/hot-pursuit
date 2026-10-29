@@ -229,15 +229,14 @@ int main() {
     Player player = Player(44, 22, 1.5, create_bounding_box(player.sprite, player.size));
 
     bn::vector<Enemy, 16> enemyVec = {};
-    enemyVec.push_back(Enemy(-60, 40, ENEMY_SIZE));
-    enemyVec.push_back(Enemy(-80, -40, ENEMY_SIZE));
-    enemyVec.push_back(Enemy(-10, 20, ENEMY_SIZE));
+    enemyVec.push_back(Enemy(rng.get_int(MIN_X, MAX_X), rng.get_int(MIN_Y, MAX_Y), ENEMY_SIZE));
+
+    int timer = 180;
+    int timeDelay = 1;
 
 
     while(true) {
         player.update();
-
-        
 
         for (Enemy& e : enemyVec) {
             e.update(player);
@@ -251,6 +250,15 @@ int main() {
                 e.sprite.set_x(rng.get_int(MIN_X, MAX_X));
                 e.sprite.set_y(rng.get_int(MIN_Y, MAX_Y));
             }
+        }
+
+        timer -= timeDelay;
+
+        // If the timer reaches 0
+        if (timer <= 0) {
+            enemyVec.push_back(Enemy(rng.get_int(MIN_X, MAX_X), rng.get_int(MIN_Y, MAX_Y), ENEMY_SIZE));
+
+            timer = 180;
         }
 
         
