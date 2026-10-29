@@ -8,9 +8,10 @@
 #include <bn_sprite_text_generator.h>
 
 #include "common_fixed_8x16_font.h"
-#include "bn_sprite_items_dot.h"
+#include "bn_sprite_items_knight.h"
 #include "bn_sprite_items_square.h"
 #include "bn_sprite_items_zombie.h"
+
 
 #include "bn_random.h"
 
@@ -110,7 +111,7 @@ class ScoreDisplay {
 class Player {
     public:
         // Create the sprite. This will be moved to a constructor
-        bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
+        bn::sprite_ptr sprite = bn::sprite_items::knight.create_sprite();
         bn::fixed speed; // The speed of the player
         bn::size size; // The width and height of the sprite
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
