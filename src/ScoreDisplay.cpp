@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "ScoreDisplay.h"
 
 #include <bn_string.h>
@@ -46,3 +47,6 @@ void ScoreDisplay::resetScore()
 {
     score = 0;
 }
+=======
+#include "ScoreDisplay.h"
+>>>>>>> 71b7574e8e0ac20e2d93d913f57c5fdb08c22030

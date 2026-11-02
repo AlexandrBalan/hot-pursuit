@@ -10,7 +10,7 @@ Enemy::Enemy(bn::fixed starting_x, bn::fixed starting_y, bn::size init_size)
     this->bounding_box = create_bounding_box(this->sprite, this->size);
 }
 
-void Enemy::update(Player& player)
+void Enemy::update(Player &player)
 {
     if (this->sprite.y() > player.sprite.y())
     {

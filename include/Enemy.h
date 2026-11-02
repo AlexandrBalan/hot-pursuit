@@ -20,5 +20,5 @@ public:
     // Constructor
     Enemy(bn::fixed starting_x, bn::fixed starting_y, bn::size init_size);
 
-    void update(Player& player);
+    void update(Player &player);
 };
