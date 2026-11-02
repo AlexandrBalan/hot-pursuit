@@ -7,9 +7,6 @@
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_text_generator.h>
 
-#include "bn_sprite_items_square.h"
-#include "bn_sprite_items_zombie.h"
-
 #include "bn_random.h"
 
 #include "bn_sound_items.h"
@@ -19,6 +16,7 @@
 #include "ScoreDisplay.h"
 #include "Player.h"
 #include "create_bounding_box.h"
+#include "Enemy.h"
 
 // Width and height of the the player bounding box
 
@@ -28,50 +26,6 @@ static constexpr int MIN_Y = -bn::display::height() / 2;
 static constexpr int MAX_Y = bn::display::height() / 2;
 static constexpr int MIN_X = -bn::display::width() / 2;
 static constexpr int MAX_X = bn::display::width() / 2;
-
-// sprint 4
-class Enemy
-{
-
-public:
-    // create a sprite for the enemy (zombie that we made)
-    bn::sprite_ptr sprite = bn::sprite_items::zombie.create_sprite();
-    bn::fixed speed = 1;   // The speed of the players
-    bn::size size;         // The width and height of the sprite
-    bn::rect bounding_box; // The rectangle around the sprite for checking collision
-
-    // Constructor
-    Enemy(bn::fixed starting_x, bn::fixed starting_y, bn::size init_size)
-    {
-        sprite.set_x(starting_x);
-        sprite.set_y(starting_y);
-        this->size = init_size;
-        this->bounding_box = create_bounding_box(this->sprite, this->size);
-    }
-
-    void update(Player &player)
-    {
-        if (this->sprite.y() > player.sprite.y())
-        {
-            this->sprite.set_y(this->sprite.y() - speed);
-        }
-        else if (this->sprite.y() < player.sprite.y())
-        {
-            this->sprite.set_y(this->sprite.y() + speed);
-        }
-
-        if (this->sprite.x() > player.sprite.x())
-        {
-            this->sprite.set_x(this->sprite.x() - speed);
-        }
-        else if (this->sprite.x() < player.sprite.x())
-        {
-            this->sprite.set_x(this->sprite.x() + speed);
-        }
-
-        this->bounding_box = create_bounding_box(this->sprite, this->size);
-    }
-};
 
 int main()
 {

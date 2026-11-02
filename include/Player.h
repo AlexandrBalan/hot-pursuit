@@ -4,6 +4,8 @@
 #include <bn_rect.h>
 #include "bn_sprite_items_knight.h"
 
+#pragma once
+
 class Player
 {
 public:
