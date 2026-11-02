@@ -42,6 +42,7 @@ int main()
 
     bn::vector<Enemy, 16> enemyVec = {};
     enemyVec.push_back(Enemy(rng.get_int(MIN_X, MAX_X), rng.get_int(MIN_Y, MAX_Y), ENEMY_SIZE));
+    bn::sound_items::zombiescream2.play(0.3);
 
     int timer = 180;
     int timeDelay = 1;
@@ -72,6 +73,7 @@ int main()
         if (timer <= 0)
         {
             enemyVec.push_back(Enemy(rng.get_int(MIN_X, MAX_X), rng.get_int(MIN_Y, MAX_Y), ENEMY_SIZE));
+            bn::sound_items::zombiescream2.play(0.3);
 
             timer = 180;
         }
